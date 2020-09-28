@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Outlet extends Model
 {
     use HasFactory;
+
+    protected $fillable = [];
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
 }
