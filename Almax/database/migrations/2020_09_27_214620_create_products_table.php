@@ -24,15 +24,10 @@ class CreateProductsTable extends Migration
                 $table->date('due');
                 $table->integer('minimal');
                 $table->string('category');
-                $table->integer('provider_id')->unsigned();
-                $table->integer('invoice_id')->unsigned();
-                $table->integer('outlet_id')->nullable();
+                $table->foreignId('provider_id')->constrained();
+                $table->foreignId('invoice_id')->constrained();
+                $table->foreignId('outlet_id')->constrained()->nullable();
                 $table->timestamps();
-            });
-            Schema::table('products', function (Blueprint $table) {
-                $table->foreign('provider_id')->references('id')->on('providers')->onDelete('cascade');
-                $table->foreign('invoice_id')->references('id')->on('invoices')->onDelete('cascade');
-                $table->foreign('outlet_id')->references('id')->on('outlets')->onDelete('cascade');
             });
         });
     }
