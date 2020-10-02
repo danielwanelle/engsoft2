@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Provider;
 use Illuminate\Http\Request;
 
 class ProviderController extends Controller
@@ -13,7 +14,8 @@ class ProviderController extends Controller
      */
     public function index()
     {
-        //
+        $data = Provider::All();
+        return view('providers', $data);
     }
 
     /**
@@ -34,7 +36,7 @@ class ProviderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $product = Provider::create($request);
     }
 
     /**
@@ -45,7 +47,7 @@ class ProviderController extends Controller
      */
     public function show($id)
     {
-        //
+        return Provider::find($id);
     }
 
     /**
@@ -68,7 +70,7 @@ class ProviderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $product = Provider::where('id', $id)->update($request);
     }
 
     /**
@@ -79,6 +81,6 @@ class ProviderController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Provider::destroy($id);
     }
 }

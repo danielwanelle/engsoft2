@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Invoice;
 use Illuminate\Http\Request;
 
 class InvoiceController extends Controller
@@ -13,7 +14,8 @@ class InvoiceController extends Controller
      */
     public function index()
     {
-        //
+        $data = Invoice::All();
+        return view('invoices', $data);
     }
 
     /**
@@ -34,7 +36,7 @@ class InvoiceController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $product = Invoice::create($request);
     }
 
     /**
@@ -45,7 +47,7 @@ class InvoiceController extends Controller
      */
     public function show($id)
     {
-        //
+        return Invoice::find($id);
     }
 
     /**
@@ -68,7 +70,7 @@ class InvoiceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $product = Invoice::where('id', $id)->update($request);
     }
 
     /**
@@ -79,6 +81,6 @@ class InvoiceController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Invoice::destroy($id);
     }
 }

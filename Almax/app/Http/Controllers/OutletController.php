@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Outlet;
 use Illuminate\Http\Request;
 
 class OutletController extends Controller
@@ -13,7 +14,8 @@ class OutletController extends Controller
      */
     public function index()
     {
-        //
+        $data = Outlet::All();
+        return view('outlets', $data);
     }
 
     /**
@@ -34,7 +36,7 @@ class OutletController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $product = Outlet::create($request);
     }
 
     /**
@@ -45,7 +47,7 @@ class OutletController extends Controller
      */
     public function show($id)
     {
-        //
+        return Outlet::find($id);
     }
 
     /**
@@ -68,7 +70,7 @@ class OutletController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $product = Outlet::where('id', $id)->update($request);
     }
 
     /**
@@ -79,6 +81,6 @@ class OutletController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Outlet::destroy($id);
     }
 }
