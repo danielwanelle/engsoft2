@@ -26,3 +26,7 @@ Route::resource('products', ProductController::class);
 Route::resource('invoices', InvoiceController::class);
 Route::resource('providers', ProviderController::class);
 Route::resource('sectors', SectorController::class);
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
