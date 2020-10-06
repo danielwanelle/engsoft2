@@ -1,9 +1,10 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\OutletController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProviderController;
-use App\Http\Controllers\SectorController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,15 +19,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    // return view('welcome');
-    echo "Olá mundo";
+    return view('auth.login');
 });
 
 Route::resource('products', ProductController::class);
 Route::resource('invoices', InvoiceController::class);
 Route::resource('providers', ProviderController::class);
-Route::resource('sectors', SectorController::class);
+Route::resource('outlets', OutletController::class);
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth:sanctum', 'verified'])->name('dashboard');
