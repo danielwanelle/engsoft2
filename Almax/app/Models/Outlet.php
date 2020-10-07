@@ -9,7 +9,9 @@ class Outlet extends Model
 {
     use HasFactory;
 
-    protected $fillable = [];
+    protected $fillable = [
+        'departament',
+    ];
 
     public function products()
     {

@@ -45,7 +45,17 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $product = Product::create($request);
+        $data['name'] = $request['name'];
+        $data['description'] = $request['description'];
+        $data['quantity'] = $request['quantity'];
+        $data['value'] = $request['value'];
+        $data['due'] = $request['due'];
+        $data['minimal'] = $request['minimal'];
+        $data['provider'] = $request['provider'];
+        $data['provider'] = $request['provider'];
+        $data['invoice'] = $request['invoice'];
+        Product::create($data);
+        $this->index();
     }
 
     /**

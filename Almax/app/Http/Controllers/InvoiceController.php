@@ -38,7 +38,12 @@ class InvoiceController extends Controller
      */
     public function store(Request $request)
     {
-        $product = Invoice::create($request);
+        $data['key'] = $request['key'];
+        $data['emission'] = $request['emission'];
+        $data['payment'] = $request['payment'];
+        $data['value'] = $request['value'];
+        Invoice::create($data);
+        $this->index();
     }
 
     /**

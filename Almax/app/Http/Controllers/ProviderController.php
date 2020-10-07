@@ -38,7 +38,15 @@ class ProviderController extends Controller
      */
     public function store(Request $request)
     {
-        $product = Provider::create($request);
+        $data = [
+            'name' => $request['name'],
+            'cnpj' => $request['cnpj'],
+        ];
+        Provider::create($data);
+        $d = Provider::All();
+        return view('providers', [
+            'data' => $d,
+        ]);
     }
 
     /**

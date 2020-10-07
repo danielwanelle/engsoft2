@@ -38,7 +38,9 @@ class OutletController extends Controller
      */
     public function store(Request $request)
     {
-        $product = Outlet::create($request);
+        $data['departament'] = $request['departament'];
+        $product = Outlet::create($data);
+        $this->index();
     }
 
     /**
