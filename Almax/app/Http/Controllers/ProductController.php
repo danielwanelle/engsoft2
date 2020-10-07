@@ -15,7 +15,9 @@ class ProductController extends Controller
     public function index()
     {
         $data = Product::All();
-        return view('products', $data);
+        return view('products', [
+            'data' => $data
+        ]);
     }
 
     /**
@@ -25,7 +27,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('create.products');
     }
 
     /**
