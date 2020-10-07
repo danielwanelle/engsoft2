@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Invoice;
 use App\Models\Product;
+use App\Models\Provider;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -27,7 +29,12 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('create.products');
+        $providers = Provider::all();
+        $invoices = Invoice::all();
+        return view('create.products', [
+            'providers' => $providers,
+            'invoices' => $invoices,
+        ]);
     }
 
     /**

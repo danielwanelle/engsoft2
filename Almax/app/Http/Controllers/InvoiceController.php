@@ -15,7 +15,9 @@ class InvoiceController extends Controller
     public function index()
     {
         $data = Invoice::All();
-        return view('invoices', $data);
+        return view('invoices', [
+            'data' => $data,
+        ]);
     }
 
     /**
@@ -25,7 +27,7 @@ class InvoiceController extends Controller
      */
     public function create()
     {
-        //
+        return view('create.invoices');
     }
 
     /**

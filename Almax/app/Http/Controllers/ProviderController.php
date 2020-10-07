@@ -15,7 +15,9 @@ class ProviderController extends Controller
     public function index()
     {
         $data = Provider::All();
-        return view('providers', $data);
+        return view('providers', [
+            'data' => $data,
+        ]);
     }
 
     /**
@@ -25,7 +27,7 @@ class ProviderController extends Controller
      */
     public function create()
     {
-        //
+        return view('create.providers');
     }
 
     /**

@@ -15,7 +15,9 @@ class OutletController extends Controller
     public function index()
     {
         $data = Outlet::All();
-        return view('outlets', $data);
+        return view('outlets', [
+            'data' => $data,
+        ]);
     }
 
     /**
@@ -25,7 +27,7 @@ class OutletController extends Controller
      */
     public function create()
     {
-        //
+        return view('create.outlets');
     }
 
     /**
